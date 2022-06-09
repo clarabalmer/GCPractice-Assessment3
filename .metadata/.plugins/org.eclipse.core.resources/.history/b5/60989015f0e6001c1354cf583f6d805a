@@ -1,0 +1,79 @@
+package co.grandcircus;
+
+import java.util.ArrayList;
+
+import org.junit.Assert;
+import org.junit.jupiter.api.Test;
+
+class MethodsTests {
+	@Test
+	void testSomeNoFuel() {
+		GasCar Clara = new GasCar("Clara");
+		GasCar Steven = new GasCar("Steven", 0);
+		ArrayList<Racer> racerList = new ArrayList<>();
+		racerList.add(Clara);
+		racerList.add(Steven);
+		ArrayList<Racer> emptyRacers = Methods.findRacersWithEmptyFuel(racerList);
+		ArrayList<Racer> expected = new ArrayList<>();
+		expected.add(Steven);
+		Assert.assertEquals(emptyRacers, expected);
+	}
+	@Test
+	void testSomeNoFuelTwo() {
+		GasCar Clara = new GasCar("Clara");
+		GasCar Steven = new GasCar("Steven", 0);
+		ArrayList<Racer> racerList = new ArrayList<>();
+		racerList.add(Clara);
+		racerList.add(Steven);
+		ArrayList<Racer> emptyRacers = Methods.findRacersWithEmptyFuel(racerList);
+		Assert.assertTrue(!emptyRacers.contains(Clara));
+	}
+	@Test
+	void testAllNoFuel() {
+		GasCar Clara = new GasCar("Clara", 0);
+		GasCar Steven = new GasCar("Steven", 0);
+		GasCar Prudence = new GasCar("Prudence", -1);
+		ArrayList<Racer> racerList = new ArrayList<>();
+		racerList.add(Clara);
+		racerList.add(Steven);
+		racerList.add(Prudence);
+		ArrayList<Racer> emptyRacers = Methods.findRacersWithEmptyFuel(racerList);
+		Assert.assertTrue(racerList.equals(emptyRacers));
+	}
+	@Test
+	void testAllFuel() {
+		GasCar Clara = new GasCar("Clara");
+		GasCar Steven = new GasCar("Steven", 120);
+		ArrayList<Racer> racerList = new ArrayList<>();
+		racerList.add(Clara);
+		racerList.add(Steven);
+		ArrayList<Racer> emptyRacers = Methods.findRacersWithEmptyFuel(racerList);
+		Assert.assertTrue(emptyRacers.isEmpty());
+	}
+	@Test
+	void testAllSolar() {
+		SolarCar Clara = new SolarCar("Clara");
+		SolarCar Steven = new SolarCar("Steven");
+		ArrayList<Racer> racerList = new ArrayList<>();
+		racerList.add(Clara);
+		racerList.add(Steven);
+		ArrayList<Racer> emptyRacers = Methods.findRacersWithEmptyFuel(racerList);
+		Assert.assertTrue(emptyRacers.isEmpty());
+	}
+	@Test
+	void testMixedRacers() {
+		SolarCar Clara = new SolarCar("Clara");
+		SolarCar Steven = new SolarCar("Steven");
+		GasCar Clarence = new GasCar("Clarence", 10);
+		GasCar Prudence = new GasCar("Prudence", -1);
+		ArrayList<Racer> racerList = new ArrayList<>();
+		racerList.add(Clara);
+		racerList.add(Steven);
+		racerList.add(Prudence);
+		racerList.add(Clarence);
+		ArrayList<Racer> emptyRacers = Methods.findRacersWithEmptyFuel(racerList);
+		ArrayList<Racer> expected = new ArrayList<>();
+		expected.add(Prudence);
+		Assert.assertEquals(emptyRacers, expected);
+	}
+}

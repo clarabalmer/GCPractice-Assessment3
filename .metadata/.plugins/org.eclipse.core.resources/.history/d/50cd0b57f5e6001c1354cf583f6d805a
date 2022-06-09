@@ -1,0 +1,16 @@
+package co.grandcircus;
+
+public class SolarCar extends Racer {
+	//constructors:
+	public SolarCar(String team) {
+		super(team, 0);
+	}
+	
+	//methods:
+	public void accelerate() {
+		speed++;
+	}
+	public boolean isFuelEmpty() {
+		return false;
+	}
+}

@@ -1,0 +1,19 @@
+package co.grandcircus;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.Assert;
+import org.junit.jupiter.api.Test;
+
+class SolarCarTests {
+	@Test
+	void testTeamConstructor() {
+		SolarCar solcar = new SolarCar("Clara");
+		Assert.assertTrue(solcar.getTeam().equals("Clara"));
+	}
+	@Test
+	void testSpeedStart() {
+		SolarCar solcar = new SolarCar("Clara");
+		Assert.assertEquals(solcar.getSpeed(), 0);
+	}
+}

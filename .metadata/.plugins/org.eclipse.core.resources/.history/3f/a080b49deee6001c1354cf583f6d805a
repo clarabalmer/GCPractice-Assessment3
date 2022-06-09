@@ -1,0 +1,24 @@
+package co.grandcircus;
+
+import java.util.ArrayList;
+
+import org.junit.Assert;
+import org.junit.jupiter.api.Test;
+
+class MethodsTests {
+	@Test
+	void testSomeNoFuel() {
+		GasCar Clara = new GasCar("Clara");
+		GasCar Steven = new GasCar("Steven", 0);
+		GasCar Clarence = new GasCar("Clarence", -1);
+		GasCar Prudence = new GasCar("Prudence", 100);
+		
+		ArrayList<Racer> racerList = new ArrayList<>();
+		racerList.add(Clara);
+		racerList.add(Steven);
+		racerList.add(Clarence);
+		racerList.add(Prudence);
+		ArrayList<Racer> emptyRacers = Methods.findRacersWithEmptyFuel(racerList);
+		Assert.assertTrue(emptyRacers.contains(Steven));
+	}
+}

@@ -1,0 +1,16 @@
+package co.grandcircus;
+
+import java.util.ArrayList;
+
+public class Methods {
+	public static ArrayList<Racer> findRacersWithEmptyFuel(ArrayList<Racer> racers) {
+		ArrayList<Racer> result = new ArrayList<>();
+		for (Racer r : racers) {
+			if (r.isFuelEmpty()) {
+				result.add(r);
+			}
+		}
+		return result;
+	}
+	
+}

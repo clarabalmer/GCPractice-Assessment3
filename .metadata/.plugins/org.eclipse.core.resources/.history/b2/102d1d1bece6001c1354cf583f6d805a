@@ -1,0 +1,29 @@
+package co.grandcircus;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.Assert;
+import org.junit.jupiter.api.Test;
+
+class GasCarTests {
+	@Test
+	void testTeamConstructor() {
+		GasCar gas = new GasCar("Clara");
+		Assert.assertTrue(gas.getTeam().equals("Clara"));
+	}
+	@Test
+	void testTeamConstructorTwo() {
+		GasCar gas = new GasCar("Clara", 15);
+		Assert.assertTrue(gas.getTeam().equals("Clara"));
+	}
+	@Test
+	void testFuelConstructor() {
+		GasCar gas = new GasCar("Clara");
+		Assert.assertEquals(gas.getFuel(), 10);
+	}
+	@Test
+	void testFuelConstructorTwo() {
+		GasCar gas = new GasCar("Clara", 15);
+		Assert.assertEquals(gas.getFuel(), 15);
+	}
+}
