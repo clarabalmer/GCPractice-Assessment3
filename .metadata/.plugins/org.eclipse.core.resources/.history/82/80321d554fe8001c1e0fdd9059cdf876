@@ -1,0 +1,76 @@
+package co.grandcircus;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.Assert;
+import org.junit.jupiter.api.Test;
+
+class GasCarTests {
+	@Test
+	void testTeamConstructor() {
+		GasCar gas = new GasCar("Clara");
+		Assert.assertTrue(gas.getTeam().equals("Clara"));
+	}
+	@Test
+	void testTeamConstructorTwo() {
+		GasCar gas = new GasCar("Clara", 15);
+		Assert.assertTrue(gas.getTeam().equals("Clara"));
+	}
+	@Test
+	void testFuelConstructor() {
+		GasCar gas = new GasCar("Clara");
+		Assert.assertEquals(gas.getFuel(), 10);
+	}
+	@Test
+	void testFuelConstructorTwo() {
+		GasCar gas = new GasCar("Clara", 15);
+		Assert.assertEquals(gas.getFuel(), 15);
+	}
+	@Test
+	void testSpeedStart() {
+		GasCar gas = new GasCar("Clara");
+		Assert.assertEquals(gas.getSpeed(), 0);
+	}
+	@Test
+	void testSpeedStartTwo() {
+		GasCar gas = new GasCar("Clara", 15);
+		Assert.assertEquals(gas.getSpeed(), 0);
+	}
+	@Test
+	void testAccelerateOnce() {
+		GasCar gas = new GasCar("Clara");
+		gas.accelerate();
+		Assert.assertEquals(gas.getSpeed(), 2);
+	}
+	@Test
+	void testAccelerateTwice() {
+		GasCar gas = new GasCar("Clara");
+		gas.accelerate();
+		gas.accelerate();
+		Assert.assertEquals(gas.getSpeed(), 4);
+	}
+	@Test
+	void testAccelerateOnceFuel() {
+		GasCar gas = new GasCar("Clara");
+		gas.accelerate();
+		Assert.assertEquals(gas.getFuel(), 9);
+	}
+	@Test
+	void testAccelerateTwiceFuel() {
+		GasCar gas = new GasCar("Clara");
+		gas.accelerate();
+		gas.accelerate();
+		Assert.assertEquals(gas.getFuel(), 8);
+	}
+	@Test
+	void testFuelNotEmpty() {
+		GasCar gas = new GasCar("Clara");
+		Assert.assertTrue(!gas.isFuelEmpty());
+	}
+	@Test
+	void testFuelEmpty() {
+		GasCar gas = new GasCar("Clara", 1);
+		gas.accelerate();
+		Assert.assertTrue(gas.isFuelEmpty());
+	}
+}
